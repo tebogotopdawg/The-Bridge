@@ -137,8 +137,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <div class="flex items-center space-x-3">
-                        <div class="text-2xl" style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: #22252a;">THE BRIDGE</div>
+                    <div class="flex items-center">
+                        <img src="https://www.dropbox.com/scl/fi/4h2fykzutyoqbpca2mgzv/THE-BRIDGE-Multimedia-Black-Logo.png?rlkey=o1pq4ab94i0hk6cwv0usx9mah&st=2mz9807t&dl=1" alt="The Bridge Logo" class="h-12 w-auto" onerror="this.src=''; this.alt='Logo failed to load'; this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center\'><svg class=\'w-6 h-6 text-gray-400\' fill=\'currentColor\' viewBox=\'0 0 24 24\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg></div>';">
                     </div>
                 </div>
                 <div class="hidden md:block">
@@ -148,6 +148,7 @@
                         <a href="#gallery" class="text-gray-700 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="hover:color: #ffa500;" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#374151'">Gallery</a>
                         <a href="#speakers" class="text-gray-700 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="hover:color: #ffa500;" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#374151'">Speakers</a>
                         <a href="#schedule" class="text-gray-700 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="hover:color: #ffa500;" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#374151'">Schedule</a>
+                        <a href="#sponsors" class="text-gray-700 px-3 py-2 rounded-md text-sm font-medium transition-colors" style="hover:color: #ffa500;" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#374151'">Sponsors</a>
                         <a href="#register" class="text-white px-4 py-2 rounded-md text-sm font-medium transition-colors" style="background-color: #ffa500;" onmouseover="this.style.backgroundColor='#e6940a'" onmouseout="this.style.backgroundColor='#ffa500'">Register</a>
                     </div>
                 </div>
@@ -168,6 +169,7 @@
                 <a href="#gallery" class="block text-gray-700 px-3 py-2 rounded-md text-base font-medium" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#374151'">Gallery</a>
                 <a href="#speakers" class="block text-gray-700 px-3 py-2 rounded-md text-base font-medium" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#374151'">Speakers</a>
                 <a href="#schedule" class="block text-gray-700 px-3 py-2 rounded-md text-base font-medium" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#374151'">Schedule</a>
+                <a href="#sponsors" class="block text-gray-700 px-3 py-2 rounded-md text-base font-medium" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#374151'">Sponsors</a>
                 <a href="#register" class="block text-white px-3 py-2 rounded-md text-base font-medium" style="background-color: #ffa500;">Register</a>
             </div>
         </div>
@@ -177,20 +179,36 @@
     <section id="home" class="gradient-bg text-white pt-20">
         <!-- Video Background -->
         <div class="absolute inset-0 overflow-hidden">
+            <!-- Main Background Video -->
             <video 
+                id="backgroundVideo"
                 autoplay 
                 muted 
                 loop 
                 playsinline
-                class="absolute inset-0 w-full h-full object-cover opacity-20"
-                style="z-index: 1;"
+                class="absolute inset-0 w-full h-full object-cover"
+                style="z-index: 1; min-width: 100%; min-height: 100%;"
+                src="https://www.dropbox.com/scl/fi/ttj4qjn5zlrymnm4z631y/1.mp4?rlkey=hd8xvvh59mwcs5bxsauwapzio&st=dxdujbv8&dl=1"
             >
-                <source src="https://videos.pexels.com/video-files/3196284/3196284-uhd_2560_1440_25fps.mp4" type="video/mp4">
-                <!-- Fallback for browsers that don't support video -->
                 Your browser does not support the video tag.
             </video>
-            <!-- Video overlay for better text readability -->
-            <div class="absolute inset-0 bg-black opacity-40" style="z-index: 1;"></div>
+            
+            <!-- Blurred Background Video for Fill -->
+            <video 
+                id="blurredVideo"
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                class="absolute inset-0 w-full h-full object-cover"
+                style="z-index: 0; filter: blur(20px); transform: scale(1.1); min-width: 110%; min-height: 110%;"
+                src="https://www.dropbox.com/scl/fi/ttj4qjn5zlrymnm4z631y/1.mp4?rlkey=hd8xvvh59mwcs5bxsauwapzio&st=dxdujbv8&dl=1"
+            >
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Animated Fading Overlay -->
+            <div id="videoOverlay" class="absolute inset-0 bg-black transition-opacity duration-1000" style="z-index: 2; opacity: 0.5;"></div>
         </div>
         
 
@@ -209,58 +227,65 @@
             <div class="film-prop" style="top: 50%; right: 40%; font-size: 2.3rem;">🎭</div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 content-overlay">
-            <div class="text-center animate-fade-in-up">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white">ACTivate 2026</h1>
-                <p class="text-xl md:text-2xl mb-4" style="color: #ffa500;">Film & Theater Conference</p>
-                <p class="text-lg mb-4 text-gray-200">April 23-24, 2026 • Mpumalanga</p>
-                <p class="text-lg mb-12 text-gray-200 max-w-3xl mx-auto">Join filmmakers, theater artists, and creative storytellers for two days of inspiring discussions, masterclasses, and cultural celebration in Mpumalanga.</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 content-overlay min-h-screen flex items-center">
+            <div class="text-center w-full">
+                <div class="animate-fade-in-up mb-8">
+                    <img src="https://www.dropbox.com/scl/fi/vj6d61e15p7rtqa1xd2km/ACTivate-Logo-W1-01.png?rlkey=4jsagy0i9dak0p7xdllxy5mgi&st=vjhg4rt9&dl=1" alt="ACTivate 2026 Logo" class="mx-auto mb-8 w-64 h-64 object-contain drop-shadow-2xl" onerror="this.src=''; this.alt='Logo failed to load'; this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-64 h-64 bg-white bg-opacity-20 rounded-full flex items-center justify-center border-2 border-white border-opacity-30 mx-auto mb-8\'><div class=\'text-center\'><div class=\'text-6xl mb-2\'>🎭</div><div class=\'text-sm text-white opacity-75\'>ACTivate 2026</div></div></div>';">
+                </div>
                 
-                <!-- Event Details -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
-                    <div class="countdown-item rounded-lg p-6">
-                        <div class="text-3xl mb-2">📅</div>
-                        <div class="text-lg font-semibold">April 23-24, 2026</div>
-                        <div class="text-gray-200">2 Days of Storytelling</div>
+                <div class="animate-fade-in-up space-y-4">
+                    <div>
+                        <p class="text-2xl md:text-3xl mb-2 font-bold" style="color: #ffa500;">Film & Theater Conference</p>
                     </div>
-                    <div class="countdown-item rounded-lg p-6">
-                        <div class="text-3xl mb-2">📍</div>
-                        <div class="text-lg font-semibold">Mpumalanga</div>
-                        <div class="text-gray-200">Gert Sibande District</div>
+                    
+                    <p class="text-lg text-gray-200 max-w-3xl mx-auto">Join filmmakers, theater artists, and creative storytellers for two days of inspiring discussions, masterclasses, and cultural celebration in the heart of South Africa.</p>
+                    
+                    <!-- Event Highlights -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        <div class="countdown-item rounded-lg p-6 text-center">
+                            <div class="text-4xl mb-3">📅</div>
+                            <div class="text-lg font-semibold">April 23-24, 2026</div>
+                            <div class="text-sm text-gray-200">Conference Dates</div>
+                        </div>
+                        <div class="countdown-item rounded-lg p-6 text-center">
+                            <div class="text-4xl mb-3">📍</div>
+                            <div class="text-lg font-semibold">Mpumalanga</div>
+                            <div class="text-sm text-gray-200">Gert Sibande District</div>
+                        </div>
+                        <div class="countdown-item rounded-lg p-6 text-center">
+                            <div class="text-4xl mb-3">🎬</div>
+                            <div class="text-lg font-semibold">Free Event</div>
+                            <div class="text-sm text-gray-200">Registration</div>
+                        </div>
                     </div>
-                    <div class="countdown-item rounded-lg p-6">
-                        <div class="text-3xl mb-2">🎭</div>
-                        <div class="text-lg font-semibold">500+ Creatives</div>
-                        <div class="text-gray-200">Film & Theater Community</div>
-                    </div>
-                </div>
 
-                <!-- Countdown Timer -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-semibold mb-6">Event Starts In:</h3>
-                    <div id="countdown" class="flex justify-center space-x-4">
-                        <div class="countdown-item rounded-lg p-4 text-center">
-                            <div id="days" class="text-3xl font-bold">45</div>
-                            <div class="text-sm text-gray-200">Days</div>
-                        </div>
-                        <div class="countdown-item rounded-lg p-4 text-center">
-                            <div id="hours" class="text-3xl font-bold">12</div>
-                            <div class="text-sm text-gray-200">Hours</div>
-                        </div>
-                        <div class="countdown-item rounded-lg p-4 text-center">
-                            <div id="minutes" class="text-3xl font-bold">30</div>
-                            <div class="text-sm text-gray-200">Minutes</div>
-                        </div>
-                        <div class="countdown-item rounded-lg p-4 text-center">
-                            <div id="seconds" class="text-3xl font-bold">15</div>
-                            <div class="text-sm text-gray-200">Seconds</div>
+                    <!-- Countdown Timer -->
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6">Event Starts In:</h3>
+                        <div id="countdown" class="flex justify-center space-x-4">
+                            <div class="countdown-item rounded-lg p-4 text-center">
+                                <div id="days" class="text-3xl font-bold">45</div>
+                                <div class="text-sm text-gray-200">Days</div>
+                            </div>
+                            <div class="countdown-item rounded-lg p-4 text-center">
+                                <div id="hours" class="text-3xl font-bold">12</div>
+                                <div class="text-sm text-gray-200">Hours</div>
+                            </div>
+                            <div class="countdown-item rounded-lg p-4 text-center">
+                                <div id="minutes" class="text-3xl font-bold">30</div>
+                                <div class="text-sm text-gray-200">Minutes</div>
+                            </div>
+                            <div class="countdown-item rounded-lg p-4 text-center">
+                                <div id="seconds" class="text-3xl font-bold">15</div>
+                                <div class="text-sm text-gray-200">Seconds</div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <button onclick="scrollToSection('register')" class="bg-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg" style="color: #22252a;">
-                    RSVP Now - Free Registration
-                </button>
+                    <button onclick="scrollToSection('register')" class="bg-white px-8 py-4 rounded-lg text-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg" style="color: #22252a;">
+                        RSVP Now - Free Registration
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -533,6 +558,48 @@
         </div>
     </section>
 
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Partners</h2>
+                <p class="text-xl text-gray-600">Supporting the future of film and theater</p>
+            </div>
+
+            <!-- Logo Partners -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Partner Logo 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-12 text-center card-hover">
+                    <div class="h-32 flex items-center justify-center mb-6">
+                        <img src="https://www.dropbox.com/scl/fi/kkvqa95wcm3dubv324sw9/dcsr.png?rlkey=gxai8qnye4wfcmuxmo8pnrik8&st=5wnicwa6&dl=1" alt="DCSR Logo" class="max-h-24 max-w-full object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-gray-400 text-center\'><svg class=\'w-12 h-12 mx-auto mb-2\' fill=\'currentColor\' viewBox=\'0 0 24 24\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><p class=\'text-sm\'>DCSR Logo</p></div>';">
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-3">Department of Culture, Sport & Recreation</h4>
+                    <p class="text-gray-600">Supporting creative excellence</p>
+                </div>
+
+                <!-- Partner Logo 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-12 text-center card-hover">
+                    <div class="h-32 flex items-center justify-center mb-6">
+                        <img src="https://www.dropbox.com/scl/fi/94ozvjiolgxr1zswr0jrb/gsdm-logo.png?rlkey=1s1ux5yo8sz76sevchh3v5zv6&st=4088dgng&dl=1" alt="GSDM Logo" class="max-h-24 max-w-full object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'text-gray-400 text-center\'><svg class=\'w-12 h-12 mx-auto mb-2\' fill=\'currentColor\' viewBox=\'0 0 24 24\'><path d=\'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\'/></svg><p class=\'text-sm\'>GSDM Logo</p></div>';">
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-3">Municipality</h4>
+                    <p class="text-gray-600">Proud partner of ACTivate 2026</p>
+                </div>
+            </div>
+
+            <!-- Become a Sponsor CTA -->
+            <div class="mt-16 text-center">
+                <div class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Become a Sponsor</h3>
+                    <p class="text-gray-600 mb-6">Join us in supporting the next generation of South African storytellers and creative professionals.</p>
+                    <button onclick="window.location.href='mailto:info@thebridgemedia.co.za?subject=Sponsorship Inquiry - ACTivate 2026'" class="text-white px-8 py-3 rounded-lg font-semibold transition-colors" style="background-color: #ffa500;" onmouseover="this.style.backgroundColor='#e6940a'" onmouseout="this.style.backgroundColor='#ffa500'">
+                        Partnership Opportunities
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Registration Section -->
     <section id="register" class="py-20 gradient-bg text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 content-overlay">
@@ -667,8 +734,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <h3 class="text-xl" style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: white;">THE BRIDGE</h3>
+                    <div class="flex items-center mb-4">
+                        <img src="https://www.dropbox.com/scl/fi/4h2fykzutyoqbpca2mgzv/THE-BRIDGE-Multimedia-Black-Logo.png?rlkey=o1pq4ab94i0hk6cwv0usx9mah&st=2mz9807t&dl=1" alt="The Bridge Logo" class="h-8 w-auto filter invert" onerror="this.src=''; this.alt='Logo failed to load'; this.style.display='none'; this.parentElement.innerHTML='<h3 class=\'text-xl\' style=\'font-family: Montserrat, sans-serif; font-weight: 900; color: white;\'>THE BRIDGE</h3>';">
                     </div>
                     <p class="text-gray-400">Connecting creativity and innovation through world-class film and theater events.</p>
                 </div>
@@ -679,13 +746,14 @@
                         <li><a href="#gallery" class="hover:text-white transition-colors" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#9ca3af'">Gallery</a></li>
                         <li><a href="#speakers" class="hover:text-white transition-colors" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#9ca3af'">Speakers</a></li>
                         <li><a href="#schedule" class="hover:text-white transition-colors" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#9ca3af'">Schedule</a></li>
+                        <li><a href="#sponsors" class="hover:text-white transition-colors" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#9ca3af'">Sponsors</a></li>
                         <li><a href="#register" class="hover:text-white transition-colors" onmouseover="this.style.color='#ffa500'" onmouseout="this.style.color='#9ca3af'">Register</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li>info@activate2026.co.za</li>
+                        <li>info@thebridgemedia.co.za</li>
                         <li>+27 694417431</li>
                         <li>Mpumalanga, Gert Sibande District</li>
                     </ul>
@@ -868,6 +936,40 @@ Please confirm this registration and send confirmation details to the attendee.`
 
         // Initialize slideshow
         showSlide(0);
+
+        // Video error handling
+        document.getElementById('backgroundVideo').addEventListener('error', function() {
+            console.log('Main video failed to load, falling back to gradient background');
+            this.style.display = 'none';
+        });
+
+        document.getElementById('blurredVideo').addEventListener('error', function() {
+            console.log('Blurred video failed to load');
+            this.style.display = 'none';
+        });
+
+        // Add option to change video overlay opacity
+        function adjustVideoOpacity(opacity) {
+            const overlay = document.getElementById('videoOverlay');
+            overlay.style.opacity = opacity;
+        }
+
+        // Add keyboard shortcut to adjust video overlay (V key)
+        document.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'v' && !e.ctrlKey && !e.altKey) {
+                const overlay = document.getElementById('videoOverlay');
+                
+                // Cycle through opacity levels: 0.5 -> 0.3 -> 0.7 -> 0.5
+                const currentOpacity = parseFloat(overlay.style.opacity);
+                if (currentOpacity <= 0.3) {
+                    overlay.style.opacity = '0.7';
+                } else if (currentOpacity <= 0.5) {
+                    overlay.style.opacity = '0.3';
+                } else {
+                    overlay.style.opacity = '0.5';
+                }
+            }
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'977b343e107773b1',t:'MTc1NjYyOTQyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97dfeafe13118a59',t:'MTc1NzY4NTQ4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
